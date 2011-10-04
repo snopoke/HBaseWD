@@ -79,7 +79,6 @@ public abstract class RowKeyDistributorTestBase {
     byte[] distributedKey = keyDistributor.getDistributedKey(key);
     byte[] value = Bytes.toBytes("some");
 
-    // No need to adjust key here as hasher doesn't change it
     hTable.put(new Put(distributedKey).add(CF, QUAL, value));
 
     Result result = hTable.get(new Get(distributedKey));

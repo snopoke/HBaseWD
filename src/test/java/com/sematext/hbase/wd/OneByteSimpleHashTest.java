@@ -72,6 +72,8 @@ public class OneByteSimpleHashTest {
   @Test
   public void testHashPrefixDistribution() {
     testDistribution(32, 55);
+    testDistribution(37, 13);
+    testDistribution(255, 20);
     testDistribution(256, 20);
     testDistribution(256, 1);
     testDistribution(1, 200);
@@ -91,7 +93,9 @@ public class OneByteSimpleHashTest {
     Assert.assertEquals(maxBuckets, allKeys.length);
 
     for (int bucketCount : bucketCounts) {
-      Assert.assertEquals(countForEachBucket, bucketCount);
+      // i.e. all buckets expected to have similar amount of values (+- 10%)
+      Assert.assertTrue("Unexpected values count in bucket: " + bucketCount + ", avg: " + countForEachBucket,
+              Math.abs((countForEachBucket - bucketCount) / countForEachBucket) < 0.10);
     }
   }
 }

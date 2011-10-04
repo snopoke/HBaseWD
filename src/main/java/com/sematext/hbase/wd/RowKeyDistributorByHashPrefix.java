@@ -75,10 +75,7 @@ public class RowKeyDistributorByHashPrefix extends AbstractRowKeyDistributor {
 
     @Override
     public byte[] getHashPrefix(byte[] originalKey) {
-      long hash = 0;
-      for (byte b : originalKey) {
-        hash = (hash << Byte.SIZE) + (b & 0xff);
-      }
+      long hash = Math.abs(hashBytes(originalKey));
       return new byte[] {(byte) (hash % mod)};
     }
 
@@ -100,6 +97,14 @@ public class RowKeyDistributorByHashPrefix extends AbstractRowKeyDistributor {
     @Override
     public void init(String storedParams) {
       this.mod = Integer.valueOf(storedParams);
+    }
+
+    /** Compute hash for binary data. */
+    private static int hashBytes(byte[] bytes) {
+      int hash = 1;
+      for (int i = 0; i < bytes.length; i++)
+        hash = (31 * hash) + (int) bytes[i];
+      return hash;
     }
   }
 
