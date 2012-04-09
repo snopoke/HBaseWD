@@ -34,6 +34,9 @@ work with which makes it perfect to use with existing code.
 
 Please refer to unit-tests for lib usage info as they aimed to act as example.
 
+For a clear introductory post read:
+http://blog.sematext.com/2012/04/09/hbasewd-avoid-regionserver-hotspotting-despite-writing-records-with-sequential-keys/
+
 Brief Usage Info (Examples):
 ----------------------------
 
