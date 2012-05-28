@@ -13,12 +13,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compile.source>1.6</maven.compile.source>
 		<maven.compile.target>1.6</maven.compile.target>
-		<hadoop.version>0.20.2-cdh3u1</hadoop.version>
-		<hbase.version>0.90.3-cdh3u1</hbase.version>
-    <log4j.version>1.2.16</log4j.version>
-    <junit.version>[4.8.2,5.0.0)</junit.version>
-    <slf4j.version>1.6.1</slf4j.version>
-    <guava.version>r09</guava.version>
+		<hadoop.version>1.0.1</hadoop.version>
+		<hbase.version>0.92.1</hbase.version>
+		<log4j.version>1.2.16</log4j.version>
+		<junit.version>[4.8.2,5.0.0)</junit.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<guava.version>r09</guava.version>
 	</properties>
 
 	<repositories>
@@ -44,7 +44,16 @@
 					<groupId>org.apache.tomcat</groupId>
 					<artifactId>jasper</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>org.codehaus.jackson</groupId>
+					<artifactId>jackson-mapper-asl</artifactId>
+				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.5.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.hbase</groupId>
@@ -59,10 +68,6 @@
 				<exclusion>
 					<groupId>org.apache.avro</groupId>
 					<artifactId>avro</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jersey</groupId>
-					<artifactId>jersey-core</artifactId>
 				</exclusion>
 				<exclusion>
 					<groupId>com.sun.jersey</groupId>
@@ -157,12 +162,6 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
 			<version>${slf4j.version}</version>
 			<scope>test</scope>
 		</dependency>
