@@ -64,7 +64,7 @@ public abstract class RowKeyDistributorTestBase {
   }
 
   @After
-  public void after() throws IOException {
+  public void after() throws Exception {
     hTable = null;
     testingUtility.shutdownMiniCluster();
     testingUtility.shutdownMiniZKCluster();
